@@ -18,13 +18,24 @@
  *                                          Huawei Technologies Co., Ltd.
  */
 
-import rp from "request-promise";
 import * as validator from "./validator";
 async function send(options: HttpRequestConfig): Promise<HttpResponse> {
-  options.resolveWithFullResponse = true;
-  return rp(options)
-    .then((result) => {
-      return Promise.resolve(createHttpResponse(result));
+  return fetch(options.uri, {
+    method: options.method,
+    headers: options.headers,
+    body: options.body,
+    signal: AbortSignal.timeout(options.timeout || 5000),
+  })
+    .then(async (result) => {
+      const body = await result.text();
+      return Promise.resolve(
+        createHttpResponse({
+          body,
+          headers: result.headers,
+          statusCode: result.status,
+          request: undefined,
+        }),
+      );
     })
     .catch((err) => {
       return Promise.reject(err);
@@ -102,7 +113,7 @@ function validateRetryConfig(retry: RetryConfig) {
  */
 export interface HttpResponse {
   readonly status: number;
-  readonly headers: any;
+  readonly headers: Headers;
   /** Response data as a raw string. */
   readonly text: string;
   /** Response data as a parsed JSON object. */
@@ -118,14 +129,14 @@ export interface HttpResponse {
 
 interface LowLevelResponse {
   statusCode: number;
-  headers: any;
+  headers: Headers;
   body: string;
   request: any;
 }
 
 class DefaultHttpResponse implements HttpResponse {
   public readonly status: number;
-  public readonly headers: any;
+  public readonly headers: Headers;
   public readonly text: string;
   private readonly request: string;
   private readonly parsedData: any;
@@ -319,13 +330,10 @@ export interface HttpRequestConfig {
   method: HttpMethod;
   /** Target URL of the request. Should be a well-formed URL including protocol, hostname, port and path. */
   uri: string;
-  headers?: { [key: string]: string };
-  body?: string | object | Buffer;
+  headers?: Headers;
+  body?: BodyInit;
   /** Connect and read timeout (in milliseconds) for the outgoing request. */
   timeout?: number;
-  json?: boolean;
-  form?: object;
-  resolveWithFullResponse?: boolean;
 }
 
 export const ENDPOINT = "https://pushtrslftest.hwcloudtest.cn:28446/v1";

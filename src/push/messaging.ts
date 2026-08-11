@@ -55,13 +55,12 @@ export class Messaging {
     let url = this.config.messagingUrl ? this.config.messagingUrl : ENDPOINT;
     let option: HttpRequestConfig = {
       uri: `${url}/${this.config.devappid}/messages:send`,
-      headers: {
+      headers: new Headers({
         "Content-Type": "application/json,charset:utf-8",
         Authorization: `Bearer ${this.authClient.token}`,
-      },
-      body: req,
+      }),
+      body: JSON.stringify(req),
       method: SEND_METHOD,
-      json: true,
     };
     if (dryRun) {
       return this._httpClient.sendWithRetry(option).then((res) => {

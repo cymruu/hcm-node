@@ -57,13 +57,12 @@ export class Topic {
     let url = this.config.topicUrl ? this.config.topicUrl : ENDPOINT;
     let option: HttpRequestConfig = {
       uri: `${url}/${this.config.devappid}/topic:subscribe`,
-      headers: {
+      headers: new Headers({
         "Content-Type": "application/json,charset:utf-8",
         Authorization: `Bearer ${this.authClient.token}`,
-      },
-      body: req,
+      }),
+      body: JSON.stringify(req),
       method: SEND_METHOD,
-      json: true,
     };
     return this._httpClient.send(option).then((res) => {
       let data = res.data;
@@ -92,13 +91,12 @@ export class Topic {
     let url = this.config.topicUrl ? this.config.topicUrl : ENDPOINT;
     let option: HttpRequestConfig = {
       uri: `${url}/${this.config.devappid}/topic:unsubscribe`,
-      headers: {
+      headers: new Headers({
         "Content-Type": "application/json,charset:utf-8",
         Authorization: `Bearer ${this.authClient.token}`,
-      },
-      body: req,
+      }),
+      body: JSON.stringify(req),
       method: SEND_METHOD,
-      json: true,
     };
     return this._httpClient.send(option).then((res) => {
       let data = res.data;
@@ -127,13 +125,12 @@ export class Topic {
     let url = this.config.topicUrl ? this.config.topicUrl : ENDPOINT;
     let option: HttpRequestConfig = {
       uri: `${url}/${this.config.devappid}/topic:list`,
-      headers: {
+      headers: new Headers({
         "Content-Type": "application/json,charset:utf-8",
         Authorization: `Bearer ${this.authClient.token}`,
-      },
-      body: req,
+      }),
+      body: JSON.stringify(req),
       method: SEND_METHOD,
-      json: true,
     };
     return this._httpClient.send(option).then((res) => {
       let data = res.data;
