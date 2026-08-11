@@ -52,16 +52,17 @@ export class Messaging {
 
   private async sendRequest(req: MsgRequest, dryRun?: boolean): Promise<MsgResponse> {
     validateMessage(req.message);
-    let option: HttpRequestConfig = {} as any;
     let url = this.config.messagingUrl ? this.config.messagingUrl : ENDPOINT;
-    option.uri = `${url}/${this.config.devappid}/messages:send`;
-    option.headers = {
-      "Content-Type": "application/json;charset=utf-8",
-      Authorization: `Bearer ${this.authClient.token}`,
+    let option: HttpRequestConfig = {
+      uri: `${url}/${this.config.devappid}/messages:send`,
+      headers: {
+        "Content-Type": "application/json,charset:utf-8",
+        Authorization: `Bearer ${this.authClient.token}`,
+      },
+      body: req,
+      method: SEND_METHOD,
+      json: true,
     };
-    option.body = req;
-    option.method = SEND_METHOD;
-    option.json = true;
     if (dryRun) {
       return this._httpClient.sendWithRetry(option).then((res) => {
         let data = res.data;

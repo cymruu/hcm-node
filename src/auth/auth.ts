@@ -21,18 +21,19 @@ export class AuthClient {
   }
 
   public async refreshToken() {
-    let option: HttpRequestConfig = {} as any;
-    option.uri = this.config.authUrl ? this.config.authUrl : ENDPOINT;
-    option.headers = {
-      "Content-Type": "application/x-www-form-urlencoded",
+    let option: HttpRequestConfig = {
+      uri: this.config.authUrl ? this.config.authUrl : ENDPOINT,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      form: {
+        grant_type: "client_credentials",
+        client_secret: this.config.appSecret,
+        client_id: this.config.appId,
+      },
+      method: REFRESH_TOKEN_METHOD,
+      json: true,
     };
-    option.form = {
-      grant_type: "client_credentials",
-      client_secret: this.config.appSecret,
-      client_id: this.config.appId,
-    };
-    option.method = REFRESH_TOKEN_METHOD;
-    option.json = true;
     return this._httpClient.sendWithRetry(option).then((res) => {
       this._token = res.data.access_token;
       return this._token;

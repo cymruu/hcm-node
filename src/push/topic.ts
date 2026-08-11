@@ -54,16 +54,17 @@ export class Topic {
   }
 
   private async getSubscribeTopicReq(req: TopicRequest): Promise<TopicResponse> {
-    let option: HttpRequestConfig = {} as any;
     let url = this.config.topicUrl ? this.config.topicUrl : ENDPOINT;
-    option.uri = `${url}/${this.config.devappid}/topic:subscribe`;
-    option.headers = {
-      "Content-Type": "application/json;charset=utf-8",
-      Authorization: `Bearer ${this.authClient.token}`,
+    let option: HttpRequestConfig = {
+      uri: `${url}/${this.config.devappid}/topic:subscribe`,
+      headers: {
+        "Content-Type": "application/json,charset:utf-8",
+        Authorization: `Bearer ${this.authClient.token}`,
+      },
+      body: req,
+      method: SEND_METHOD,
+      json: true,
     };
-    option.body = req;
-    option.method = SEND_METHOD;
-    option.json = true;
     return this._httpClient.send(option).then((res) => {
       let data = res.data;
       return data;
@@ -88,16 +89,17 @@ export class Topic {
   }
 
   private async getUnSubscribeTopicReq(req: TopicRequest): Promise<TopicResponse> {
-    let option: HttpRequestConfig = {} as any;
     let url = this.config.topicUrl ? this.config.topicUrl : ENDPOINT;
-    option.uri = `${url}/${this.config.devappid}/topic:unsubscribe`;
-    option.headers = {
-      "Content-Type": "application/json;charset=utf-8",
-      Authorization: `Bearer ${this.authClient.token}`,
+    let option: HttpRequestConfig = {
+      uri: `${url}/${this.config.devappid}/topic:unsubscribe`,
+      headers: {
+        "Content-Type": "application/json,charset:utf-8",
+        Authorization: `Bearer ${this.authClient.token}`,
+      },
+      body: req,
+      method: SEND_METHOD,
+      json: true,
     };
-    option.body = req;
-    option.method = SEND_METHOD;
-    option.json = true;
     return this._httpClient.send(option).then((res) => {
       let data = res.data;
       return data;
@@ -122,16 +124,17 @@ export class Topic {
   }
 
   private async getQueryTopic(req: QueryTopicRequest): Promise<QueryTopicResponse> {
-    let option: HttpRequestConfig = {} as any;
     let url = this.config.topicUrl ? this.config.topicUrl : ENDPOINT;
-    option.uri = `${url}/${this.config.devappid}/topic:list`;
-    option.headers = {
-      "Content-Type": "application/json;charset=utf-8",
-      Authorization: `Bearer ${this.authClient.token}`,
+    let option: HttpRequestConfig = {
+      uri: `${url}/${this.config.devappid}/topic:list`,
+      headers: {
+        "Content-Type": "application/json,charset:utf-8",
+        Authorization: `Bearer ${this.authClient.token}`,
+      },
+      body: req,
+      method: SEND_METHOD,
+      json: true,
     };
-    option.body = req;
-    option.method = SEND_METHOD;
-    option.json = true;
     return this._httpClient.send(option).then((res) => {
       let data = res.data;
       return data;
