@@ -144,7 +144,7 @@ class DefaultHttpResponse implements HttpResponse {
       this.parsedData = validator.isString(body) ? JSON.parse(body) : body;
     } catch (err) {
       this.parsedData = undefined;
-      this.parseError = err;
+      this.parseError = err as Error;
     }
     this.request = resp.request;
   }

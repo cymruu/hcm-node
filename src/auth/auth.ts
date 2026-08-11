@@ -1,5 +1,6 @@
 import { HttpClient, HttpRequestConfig, HttpMethod } from "../utils/api-request";
 import { HcmConfig } from "../types";
+
 const REFRESH_TOKEN_METHOD: HttpMethod = "POST";
 const ENDPOINT = "https://logintestlf.hwcloudtest.cn/oauth2/token";
 
