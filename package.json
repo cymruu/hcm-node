@@ -12,14 +12,9 @@
   "scripts": {
     "build": "tsc"
   },
-  "dependencies": {
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^26.2.0",
-    "@types/request": "^2.48.13",
-    "@types/request-promise": "^4.1.51",
     "typescript": "^7.0.2"
   },
   "config": {}
