@@ -1,5 +1,5 @@
 {
-  "name": "hcm-node",
+  "name": "@cymruu/hcm-node",
   "version": "0.0.4",
   "description": "HCM (Huawei Cloud Messaging) Node SDK.",
   "license": "Apache 2.0",
