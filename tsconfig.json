@@ -4,7 +4,6 @@
     "rootDir": "./src/",
     "outDir": "./dist/",
     "esModuleInterop": true,
-    "types": ["node"],
     "allowSyntheticDefaultImports": true,
     "module": "nodenext",
     "resolveJsonModule": true,
