@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/cymruu/hcm-node.git"
   },
+  "files": [
+    "dist/"
+  ],
   "main": "./dist/index.js",
   "scripts": {
     "build": "tsc"
