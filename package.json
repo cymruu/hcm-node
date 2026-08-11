@@ -2,6 +2,8 @@
   "name": "hcm-node",
   "version": "0.0.4",
   "description": "HCM (Huawei Cloud Messaging) Node SDK.",
+  "license": "Apache 2.0",
+  "author": "elquimeras",
   "repository": {
     "type": "git",
     "url": "https://github.com/cymruu/hcm-node.git"
@@ -10,17 +12,15 @@
   "scripts": {
     "build": "tsc"
   },
-  "config": {},
-  "author": "elquimeras",
-  "license": "Apache 2.0",
   "dependencies": {
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
   },
   "devDependencies": {
-    "typescript": "3.1.6",
-    "@types/node": "8.10.34",
-    "@types/request": "^2.48.2",
-    "@types/request-promise": "^4.1.44"
-  }
+    "@types/node": "^26.2.0",
+    "@types/request": "^2.48.13",
+    "@types/request-promise": "^4.1.51",
+    "typescript": "^7.0.2"
+  },
+  "config": {}
 }
