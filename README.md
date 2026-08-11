@@ -4,8 +4,13 @@ Node.js package code encapsulates APIs of the HUAWEI Push Kit server.
 
 ## Installation
 
+Configure NPM to install packages from github's registry.
+https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
+
+Then run:
+
 ```bash
-$ npm i hcm-node
+$ npm i @cymruu/hcm-node
 ```
 
 ## Usage
