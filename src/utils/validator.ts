@@ -21,7 +21,7 @@
  * @return {boolean} Whether the value is a number or not.
  */
 export function isNumber(value: any): boolean {
-    return typeof value === "number" && !isNaN(value);
+  return typeof value === "number" && !isNaN(value);
 }
 
 /**
@@ -31,7 +31,7 @@ export function isNumber(value: any): boolean {
  * @return {boolean} Whether the value is a string or not.
  */
 export function isString(value: any): value is string {
-    return typeof value === "string";
+  return typeof value === "string";
 }
 
 /**
@@ -41,5 +41,5 @@ export function isString(value: any): value is string {
  * @return {boolean} Whether the value is a non-empty string or not.
  */
 export function isNonEmptyString(value: any): value is string {
-    return value !== "" && isString(value);
+  return value !== "" && isString(value);
 }

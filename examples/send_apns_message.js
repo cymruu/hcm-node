@@ -18,48 +18,50 @@ const hcm = require("../dist/index").default;
 const config = require("./common/config");
 
 hcm.init({
-    appId: config.AppId,
-    appSecret: config.AppSecret,
-    authUrl: config.AuthUrl,
-    pushUrl: config.PushUrl
+  appId: config.AppId,
+  appSecret: config.AppSecret,
+  authUrl: config.AuthUrl,
+  pushUrl: config.PushUrl,
 });
 
 let mc = hcm.messaging().messaging;
 
-let headers = {HEAD_APNs_ID: "21349-141324"}
+let headers = { HEAD_APNs_ID: "21349-141324" };
 let apns_alert = {
-    title:"apnstest",
-    body:"body",
-    launch_image:"image",
-    custom_data:{"k1": "v1", "k2": "v2"}
-}
+  title: "apnstest",
+  body: "body",
+  launch_image: "image",
+  custom_data: { k1: "v1", k2: "v2" },
+};
 let apns_payload_aps = {
-    alert:apns_alert,
-    badge:1,
-    sound:"wtewt.mp4",
-    content_available:true,
-    category:"category",
-    thread_id:"id"
-}
+  alert: apns_alert,
+  badge: 1,
+  sound: "wtewt.mp4",
+  content_available: true,
+  category: "category",
+  thread_id: "id",
+};
 let payload = {
-    aps:apns_payload_aps,
-    acme_account:"jane.appleseed@apple.com",
-    acme_message:"message123456"
-}
+  aps: apns_payload_aps,
+  acme_account: "jane.appleseed@apple.com",
+  acme_message: "message123456",
+};
 let apns_hms_options = {
-    target_user_type:1
-}
+  target_user_type: 1,
+};
 let apns_push_config = {
-    headers:headers,
-    payload:payload,
-    hms_options:apns_hms_options
-}
+  headers: headers,
+  payload: payload,
+  hms_options: apns_hms_options,
+};
 let message = {
-    apns:apns_push_config,
-    token: config.APNSTokenArray
-};    
-mc.send(message, false).then(data => {
+  apns: apns_push_config,
+  token: config.APNSTokenArray,
+};
+mc.send(message, false)
+  .then((data) => {
     console.log(data);
-}).catch(err => {
+  })
+  .catch((err) => {
     console.log(err);
-});
+  });

@@ -1,11 +1,7 @@
-import {
-  HttpClient,
-  HttpRequestConfig,
-  HttpMethod,
-} from '../utils/api-request';
-import { HcmConfig } from '../types';
-const REFRESH_TOKEN_METHOD: HttpMethod = 'POST';
-const ENDPOINT = 'https://logintestlf.hwcloudtest.cn/oauth2/token';
+import { HttpClient, HttpRequestConfig, HttpMethod } from "../utils/api-request";
+import { HcmConfig } from "../types";
+const REFRESH_TOKEN_METHOD: HttpMethod = "POST";
+const ENDPOINT = "https://logintestlf.hwcloudtest.cn/oauth2/token";
 
 export class AuthClient {
   private _httpClient: HttpClient;
@@ -28,10 +24,10 @@ export class AuthClient {
     let option: HttpRequestConfig = {} as any;
     option.uri = this.config.authUrl ? this.config.authUrl : ENDPOINT;
     option.headers = {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      "Content-Type": "application/x-www-form-urlencoded",
     };
     option.form = {
-      grant_type: 'client_credentials',
+      grant_type: "client_credentials",
       client_secret: this.config.appSecret,
       client_id: this.config.appId,
     };

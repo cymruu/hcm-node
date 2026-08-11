@@ -18,28 +18,29 @@ const hcm = require("../dist/index").default;
 const config = require("./common/config");
 
 hcm.init({
-    appId: config.AppId,
-    appSecret: config.AppSecret,
-    authUrl: config.AuthUrl,
-    pushUrl: config.PushUrl
+  appId: config.AppId,
+  appSecret: config.AppSecret,
+  authUrl: config.AuthUrl,
+  pushUrl: config.PushUrl,
 });
 
 let mc = hcm.messaging().messaging;
 
 let AndroidConfig = {
-    collapse_key: -1,
-    urgency: "HIGH",
-    ttl: "10000s",
-    bi_tag: "the_sample_bi_tag_for_receipt_service"
-}
+  collapse_key: -1,
+  urgency: "HIGH",
+  ttl: "10000s",
+  bi_tag: "the_sample_bi_tag_for_receipt_service",
+};
 let message = {
-    data: "test",
-    android: AndroidConfig,
-    token: config.AndroidTokenArray
-            
-};    
-mc.send(message, false).then(data => {
+  data: "test",
+  android: AndroidConfig,
+  token: config.AndroidTokenArray,
+};
+mc.send(message, false)
+  .then((data) => {
     console.log(data);
-}).catch(err => {
+  })
+  .catch((err) => {
     console.log(err);
-});
+  });

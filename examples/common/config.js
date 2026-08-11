@@ -28,12 +28,12 @@ exports.TargetTopic = "targetTopic";
 //TargetCondition the condition of the devices operated
 exports.TargetCondition = "'targetTopic\' in topics";
 //TargetToken the token of the device operated
-exports.TargetToken = 'pushtoken';
+exports.TargetToken = "pushtoken";
 //WebPushTokenArra the collection of the tokens of th devices operated
-exports.WebPushTokenArray = new Array('pushtoken1','pushtoken2');
+exports.WebPushTokenArray = new Array("pushtoken1", "pushtoken2");
 //APNSTokenArray the collection of the tokens of th devices operated
-exports.APNSTokenArray = new Array('pushtoken1','pushtoken2');
+exports.APNSTokenArray = new Array("pushtoken1", "pushtoken2");
 //AndroidTokenArray the collection of the tokens of th devices operated
-exports.AndroidTokenArray = new Array('pushtoken1','pushtoken2');
+exports.AndroidTokenArray = new Array("pushtoken1", "pushtoken2");
 //FastTokenArray the collection of the tokens of th devices operated
-exports.FastTokenArray = new Array('pushtoken1','pushtoken2');
+exports.FastTokenArray = new Array("pushtoken1", "pushtoken2");

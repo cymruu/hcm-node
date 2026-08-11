@@ -17,7 +17,7 @@
     "declarationMap": true,
     "forceConsistentCasingInFileNames": false,
     "rewriteRelativeImportExtensions": true,
-    "types": ["node"],
+    "types": ["node"]
   },
   "lib": ["esnext"],
   "include": ["src/**/*.ts"],

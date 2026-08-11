@@ -1,9 +1,9 @@
-import { Messaging } from './push/messaging';
-import { Topic } from './push/topic';
-import { MessagingConfig } from './push/modle/message';
-import { TopicConfig } from './push/modle/topic';
-import { AuthClient } from './auth/auth';
-import { HcmConfig, HcmService } from './types';
+import { Messaging } from "./push/messaging";
+import { Topic } from "./push/topic";
+import { MessagingConfig } from "./push/modle/message";
+import { TopicConfig } from "./push/modle/topic";
+import { AuthClient } from "./auth/auth";
+import { HcmConfig, HcmService } from "./types";
 
 export default class HcmNode {
   private authClient: AuthClient;
@@ -32,9 +32,7 @@ export default class HcmNode {
       };
     }
     conf.devappid = conf.devappid ? conf.devappid : this.config.appId;
-    conf.messagingUrl = conf.messagingUrl
-      ? conf.messagingUrl
-      : this.config.pushUrl;
+    conf.messagingUrl = conf.messagingUrl ? conf.messagingUrl : this.config.pushUrl;
     let messaging = new Messaging(conf, this.authClient);
 
     return { messaging };
@@ -58,7 +56,7 @@ export default class HcmNode {
 
   private checkInit() {
     if (!this.config || !this.config.appId || !this.config.appSecret) {
-      throw new Error('appId or appsecret is null, please init Hcm first!');
+      throw new Error("appId or appsecret is null, please init Hcm first!");
     }
     return true;
   }

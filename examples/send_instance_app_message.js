@@ -18,29 +18,31 @@ const hcm = require("../dist/index").default;
 const config = require("./common/config");
 
 hcm.init({
-    appId: config.FastAppId,
-    appSecret: config.FastAppSecret,
-    authUrl: config.AuthUrlOn,
-    pushUrl: config.PushUrlOn
+  appId: config.FastAppId,
+  appSecret: config.FastAppSecret,
+  authUrl: config.AuthUrlOn,
+  pushUrl: config.PushUrlOn,
 });
 
 let mc = hcm.messaging().messaging;
 
 let androidConfig = {
-    collapse_key: -1,
-    urgency:"HIGH",
-    ttl: "10000s",
-    bi_tag: "the_sample_bi_tag_for_receipt_service",
-    fast_app_target: 1
-}  
+  collapse_key: -1,
+  urgency: "HIGH",
+  ttl: "10000s",
+  bi_tag: "the_sample_bi_tag_for_receipt_service",
+  fast_app_target: 1,
+};
 
 let message = {
-    data: "{\"pushtype\":0,\"pushbody\":{\"title\":\"This is a test message of fastApp\",\"description\":\"Happy new year!\",\"page\":\"/\",\"params\":{\"key1\":\"test1\",\"key2\":\"test2\"},\"ringtone\":{\"vibration\":\"true\",\"breathLight\":\"true\"}}}",
-	android: androidConfig,
-	token: config.FastTokenArray
+  data: '{"pushtype":0,"pushbody":{"title":"This is a test message of fastApp","description":"Happy new year!","page":"/","params":{"key1":"test1","key2":"test2"},"ringtone":{"vibration":"true","breathLight":"true"}}}',
+  android: androidConfig,
+  token: config.FastTokenArray,
 };
-mc.send(message, false).then(data => {
+mc.send(message, false)
+  .then((data) => {
     console.log(data);
-}).catch(err => {
+  })
+  .catch((err) => {
     console.log(err);
-});
+  });

@@ -17,36 +17,36 @@
 import { ErrIndex } from "./message";
 
 export interface TopicConfig {
-    devappid: string;
-    topicUrl?: string;
+  devappid: string;
+  topicUrl?: string;
 }
 
 export interface TopicRequest {
-    topic: string;
-    tokenArray: Array<string>;
+  topic: string;
+  tokenArray: Array<string>;
 }
 
 export interface QueryTopicRequest {
-    token: string;
+  token: string;
 }
 
 export interface TopicResponse {
-    code: string;
-    msg: string;
-    requestId: string;
-    failureCount: number;
-    successCount: number;
-    errors?: Array<ErrIndex>;
+  code: string;
+  msg: string;
+  requestId: string;
+  failureCount: number;
+  successCount: number;
+  errors?: Array<ErrIndex>;
 }
 
 export interface QueryTopicResponse {
-    code: string;
-    msg: string;
-    requestId: string;
-    topics?:Array<TopicBody>
+  code: string;
+  msg: string;
+  requestId: string;
+  topics?: Array<TopicBody>;
 }
 
 export interface TopicBody {
-    name?: string;
-    addDate?: string;
+  name?: string;
+  addDate?: string;
 }
