@@ -4,8 +4,9 @@ import { MessagingConfig } from "./push/modle/message";
 import { TopicConfig } from "./push/modle/topic";
 import { AuthClient } from "./auth/auth";
 import { HcmConfig, HcmService } from "./types";
+export { Message } from "./push/modle/message";
 
-export default class HcmNode {
+export class HcmNode {
   private authClient: AuthClient;
   private config: HcmConfig;
 
